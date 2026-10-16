@@ -1,4 +1,232 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joe McBride</title>
-<style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;background:#fafafa;color:#222}</style></head>
-<body><h1>Joe McBride</h1></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joe McBride</title>
+<meta name="description" content="Engineering leader building AI security products at Mozilla, and a coach for people who want to grow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f2; --surface: #ffffff; --fg: #1d1b19; --muted: #6b655e; --line: #e6e1da;
+    --accent: #5b3fd1; --accent-ink: #ffffff; --accent-soft: #ece7fb; --warm: #c2562f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141312; --surface: #1d1c1a; --fg: #f2efea; --muted: #a59e95; --line: #2d2b28;
+      --accent: #9c86ff; --accent-ink: #141312; --accent-soft: #26213d; --warm: #f08a63;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--accent); }
+  h1, h2 { font-family: Fraunces, Georgia, serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; margin: 0; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin-bottom: 12px; }
+  h3 { font-size: 1.05rem; margin: 0 0 4px; }
+  .eyebrow { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--warm); margin-bottom: 10px; }
+  .lede { color: var(--muted); font-size: 1.08rem; max-width: 60ch; }
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+  nav .name { font-weight: 700; }
+  nav .links a { color: var(--fg); text-decoration: none; margin-left: 20px; font-size: .95rem; }
+  nav .links a:hover { color: var(--accent); }
+
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 40px 0 80px; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 18px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-photo { position: relative; }
+  .hero-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; display: block; box-shadow: 0 20px 50px rgba(0,0,0,.18); }
+  .hero-photo figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(0,0,0,.6); color: #fff; font-size: .8rem; padding: 5px 10px; border-radius: 999px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn { display: inline-block; padding: 12px 20px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { color: var(--accent); }
+
+  .now { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill { background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 4px 12px; font-size: .85rem; font-weight: 500; }
+
+  .timeline { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+  .timeline li { display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 18px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+  .timeline .co { font-weight: 700; }
+  .timeline .role { color: var(--muted); font-size: .9rem; }
+  .timeline p { margin: 0; }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .skills .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .gallery figure { margin: 0; }
+  .gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 15%; border-radius: 14px; display: block; }
+  .gallery figcaption { font-size: .85rem; color: var(--muted); margin-top: 6px; }
+
+  .coach { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .coach ul { padding-left: 20px; margin: 16px 0 0; }
+  .coach li { margin-bottom: 6px; }
+
+  form { display: grid; gap: 12px; }
+  label { font-size: .85rem; font-weight: 600; }
+  input, select, textarea { width: 100%; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  textarea { min-height: 120px; resize: vertical; }
+  form button { justify-self: start; cursor: pointer; font: inherit; }
+  .fine { font-size: .8rem; color: var(--muted); }
+
+  footer { padding: 32px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  .hp { position: absolute; left: -9999px; }
+  #form-status { margin: 0; font-size: .9rem; }
+
+  @media (max-width: 760px) {
+    nav .links { display: none; }
+    .hero, .now, .coach { grid-template-columns: 1fr; gap: 28px; }
+    .hero { padding-top: 16px; }
+    .hero-photo { order: -1; max-width: 360px; }
+    .skills { grid-template-columns: 1fr; }
+    .timeline li { grid-template-columns: 1fr; gap: 4px; }
+    .gallery { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="name">Joe McBride</span>
+    <span class="links"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#coaching">Coaching</a><a href="#contact">Contact</a></span>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Engineering leader · Coach · Austin, TX</div>
+      <h1>I build teams that ship <em>in the figure-it-out phase.</em></h1>
+      <p class="lede">I lead engineering for 0DIN, Mozilla's AI security product. Before that I helped Rackspace, DigitalOcean and Bestow scale through their high-growth years. I also coach people one-on-one and in groups who want to grow as leaders and as humans.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn ghost" href="#coaching">Coaching</a>
+      </div>
+    </div>
+    <figure class="hero-photo">
+      <img src="img/blackhat-booth.jpg" alt="Joe at the 0DIN by Mozilla booth at Black Hat USA 2026">
+      <figcaption>0DIN booth · Black Hat USA 2026</figcaption>
+    </figure>
+  </header>
+
+  <section id="work">
+    <div class="now">
+      <div>
+        <div class="eyebrow">Current work</div>
+        <h2>Securing AI at Mozilla</h2>
+        <p class="lede">As Senior Engineering Manager for 0DIN, I lead the team building tools that help companies find and fix vulnerabilities in large language models and AI agents, before attackers do.</p>
+      </div>
+      <div class="card">
+        <h3>What we build</h3>
+        <p>The GenAI bug bounty program, an AI scanner that tests models and apps for jailbreaks and prompt injection, and a threat intelligence feed of real-world AI exploits.</p>
+        <div class="pills"><span class="pill">AI red teaming</span><span class="pill">Prompt injection</span><span class="pill">Threat intel</span><span class="pill">LLM security</span></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/ekoparty-booth.jpg" alt="Joe at the 0DIN booth at Ekoparty in Buenos Aires"><figcaption>Ekoparty · Buenos Aires, 2025</figcaption></figure>
+      <figure><img src="img/blackhat-expo.jpg" alt="Joe on the Black Hat expo floor"><figcaption>Black Hat expo floor · Las Vegas, 2026</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="eyebrow">Experience</div>
+    <h2>Where I've done my best work</h2>
+    <p class="lede">A pattern: I join when things are growing fast and not yet figured out, and I help build the team and systems that let it scale.</p>
+    <ul class="timeline">
+      <li><div><div class="co">Mozilla</div><div class="role">Sr. Engineering Manager</div></div><p>Leading engineering for 0DIN, Mozilla's AI security product, after starting on Fakespot, Mozilla's AI-powered review analysis product.</p></li>
+      <li><div><div class="co">Bestow</div><div class="role">Engineering leadership</div></div><p>Built and scaled engineering for a life insurance technology platform and its carrier partnerships.</p></li>
+      <li><div><div class="co">DigitalOcean</div><div class="role">Engineering Manager</div></div><p>Led platform teams through rapid growth, owning reliability goals, planning and team development.</p></li>
+      <li><div><div class="co">Rackspace</div><div class="role">Engineering</div></div><p>Built internal sales and operations platforms during Rackspace's high-growth years.</p></li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <div class="eyebrow">Skills</div>
+    <h2>What I bring</h2>
+    <div class="skills">
+      <div class="card"><h3>Engineering leadership</h3><p>Hiring, growing and leading distributed teams across time zones. Clear goals, honest feedback, steady delivery.</p></div>
+      <div class="card"><h3>Zero to one</h3><p>Taking new products from idea to paying customers: scoping, building fast and learning from the market.</p></div>
+      <div class="card"><h3>AI security</h3><p>LLM vulnerabilities, red teaming, and turning research into products that security teams actually use.</p></div>
+      <div class="card"><h3>Cross-functional work</h3><p>Partnering closely with product, design, sales and research so engineering serves the business.</p></div>
+      <div class="card"><h3>Platform and reliability</h3><p>Cloud infrastructure, SLOs and the systems that keep fast-moving products up.</p></div>
+      <div class="card"><h3>In front of customers</h3><p>Representing products at Black Hat, DEF CON and Ekoparty, and working directly with enterprise buyers.</p></div>
+    </div>
+  </section>
+
+  <section id="coaching">
+    <div class="coach">
+      <div>
+        <div class="eyebrow">Coaching</div>
+        <h2>Grow on purpose</h2>
+        <p class="lede">I coach people who feel stuck, or who are ready for the next level, in their career, leadership or personal life. Sessions are practical, focused and built around what you want to change.</p>
+        <ul>
+          <li>One-on-one sessions, 45 to 50 minutes</li>
+          <li>Small group sessions</li>
+          <li>Remote, or in person in Austin</li>
+        </ul>
+        <div class="ctas"><a class="btn primary" href="#contact">Ask about coaching</a><a class="btn ghost" href="/survey">Current clients: session survey</a></div>
+      </div>
+      <div class="card">
+        <h3>How it works</h3>
+        <ol style="padding-left:20px;margin:12px 0 0">
+          <li style="margin-bottom:8px"><strong>Intro call.</strong> We talk about where you are and where you want to be.</li>
+          <li style="margin-bottom:8px"><strong>Sessions.</strong> Focused work on the patterns holding you back, with practices to use between sessions.</li>
+          <li><strong>Check-ins.</strong> A short survey after each session keeps us honest about progress.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="coach">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Let's talk</h2>
+        <p class="lede">Whether it's an engineering role, an AI security conversation or coaching, send a note and I'll get back to you.</p>
+      </div>
+      <form id="contact-form">
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div><label for="n">Name</label><input id="n" name="name" required></div>
+        <div><label for="e">Email</label><input id="e" name="email" type="email" required></div>
+        <div><label for="t">About</label><select id="t" name="topic"><option>Engineering leadership / roles</option><option>AI security</option><option>Coaching</option><option>Something else</option></select></div>
+        <div><label for="m">Message</label><textarea id="m" name="message" required></textarea></div>
+        <button class="btn primary" type="submit">Send message</button>
+        <p id="form-status" role="status"></p>
+        <p class="fine">Goes straight to Joe's inbox. Your email is never shared.</p>
+      </form>
+      <script>
+        // FormSubmit alias (not an email address), so the inbox isn't exposed in the page.
+        var FORM_ENDPOINT = "https://formsubmit.co/ajax/3cc8dc4f7df7d9e47d1b8af2c6aa0fef";
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var form = e.target, btn = form.querySelector("button"), status = document.getElementById("form-status");
+          var data = Object.fromEntries(new FormData(form));
+          data._subject = "mcbridejoe.com: " + data.topic + " from " + data.name;
+          data._replyto = data.email;
+          btn.disabled = true; btn.textContent = "Sending...";
+          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(data) })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+              if (String(res.success) !== "true") throw new Error(res.message);
+              form.reset(); btn.textContent = "Sent"; status.textContent = "Thanks! Your message is on its way.";
+            })
+            .catch(function () {
+              btn.disabled = false; btn.textContent = "Send message";
+              status.textContent = "Something went wrong. Please try again in a moment.";
+            });
+        });
+      </script>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Joe McBride</span><span>Austin, Texas</span></footer>
+</div>
+</body>
+</html>
